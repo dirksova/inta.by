@@ -1,0 +1,22 @@
+[21-Jan-2019 23:52:44 Europe/Minsk] PHP Fatal error:  Uncaught Exception: Error: DATA not accepted from server! in /home/intaby/public_html/system/library/mail.php:409
+Stack trace:
+#0 /home/intaby/public_html/system/storage/modification/catalog/controller/information/contact.php(28): Mail->send()
+#1 /home/intaby/public_html/vqmod/vqcache/vq2-system_storage_modification_system_engine_action.php(51): ControllerInformationContact->index()
+#2 /home/intaby/public_html/system/engine/front.php(34): Action->execute(Object(Registry))
+#3 /home/intaby/public_html/system/engine/front.php(29): Front->execute(Object(Action))
+#4 /home/intaby/public_html/system/framework.php(103): Front->dispatch(Object(Action), Object(Action))
+#5 /home/intaby/public_html/vqmod/vqcache/vq2-system_startup.php(124): require_once('/home/intaby/pu...')
+#6 /home/intaby/public_html/index.php(26): start('catalog')
+#7 {main}
+  thrown in /home/intaby/public_html/system/library/mail.php on line 409
+[22-Jan-2019 07:40:40 Europe/Minsk] PHP Fatal error:  Uncaught Exception: Error: DATA not accepted from server! in /home/intaby/public_html/system/library/mail.php:409
+Stack trace:
+#0 /home/intaby/public_html/system/storage/modification/catalog/controller/information/contact.php(28): Mail->send()
+#1 /home/intaby/public_html/vqmod/vqcache/vq2-system_storage_modification_system_engine_action.php(51): ControllerInformationContact->index()
+#2 /home/intaby/public_html/system/engine/front.php(34): Action->execute(Object(Registry))
+#3 /home/intaby/public_html/system/engine/front.php(29): Front->execute(Object(Action))
+#4 /home/intaby/public_html/system/framework.php(103): Front->dispatch(Object(Action), Object(Action))
+#5 /home/intaby/public_html/vqmod/vqcache/vq2-system_startup.php(124): require_once('/home/intaby/pu...')
+#6 /home/intaby/public_html/index.php(26): start('catalog')
+#7 {main}
+  thrown in /home/intaby/public_html/system/library/mail.php on line 409

@@ -1,0 +1,13 @@
+.LMCfilter_price {
+    margin: 42px 5px 40px 5px;
+}
+.LMCfilter_price .noUi-connect {
+    background: #FFF; 
+}
+.LMCfilter_price.noUi-target {
+    background: #555;
+}
+.LMCfilter_price .noUi-origin:first-child .noUi-tooltip {
+    bottom: auto;
+    top: 120%;
+}

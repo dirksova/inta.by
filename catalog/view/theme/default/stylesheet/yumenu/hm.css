@@ -1,0 +1,793 @@
+/*
+ * YUMenu v1.0.5 Copyright © 2017, iDiY
+ */
+
+.iheader
+{
+    display: none;
+}
+
+.inav *:before,
+.inav *:after
+{
+    display: block;
+}
+.inav,
+.inav ul
+{
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+.inav .mi
+{
+    display: block;
+    float: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+.inav .mi.irel
+{
+    position: relative;
+}
+.inav .ilink
+{
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+.inav .iicon
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.inav .iicon img
+{
+    display: block;
+    height: auto;
+    border: 0;
+}
+.inav .ititle
+{
+    position: relative;
+    display: flex;
+    flex-shrink: 2;
+    flex-grow: 8;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+}
+
+/* SubList */
+.inav .iparent > .isub
+{
+    position: absolute;
+    z-index: 7777;
+    top: 100%;
+    left: -1px;
+    opacity: 0;
+    visibility: hidden;
+
+    -webkit-transition: opacity .2s;
+       -moz-transition: opacity .2s;
+        -ms-transition: opacity .2s;
+         -o-transition: opacity .2s;
+            transition: opacity .2s;
+}
+.inav .iparent.sub-open > .isub
+{
+    opacity: 1;
+    visibility: visible;
+}
+.inav .isub .isub
+{
+    top: -1px;
+    left: 100%;
+}
+.inav .ilists > div
+{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+}
+.inav .ilist > ul
+{
+    flex-direction: column;
+    min-width: 160px;
+    justify-content: flex-start;
+    flex-grow: 1;
+}
+.inav .ilists > div > ul
+{
+    flex-flow: row nowrap;
+}
+.inav .ilists > div > ul + ul
+{
+    margin-top: .5em;
+}
+.inav .ilists > div > ul > .mi {
+    min-width: 160px;
+}
+.inav .ilists > div > ul > .mi +.mi {
+    margin-left: 2em;
+}
+.inav .ilists .ilist
+{
+    display: none;
+}
+
+/* Styles */
+.yumenu
+{
+    position: relative;
+    margin-bottom: 10px;
+    border-radius: .4em;
+    background-color: #fdfdfd;
+   width: 1163px;
+}
+}
+.inav .mi
+{
+    line-height: 20px;
+}
+
+/* First level */
+.inav > .mi > .ilink,
+.inav > .igroup > ul > .mi > .ilink
+{
+    color: white;
+    background-color: transparent;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+}
+.inav > .mi:hover > .ilink,
+.inav > .igroup > ul > .mi:hover > .ilink
+{
+    background-color: rgba(255,255,255,.1);
+}
+.inav > .mi > .icurrent,
+.inav > .mi.active > .ilink,
+.inav > .igroup > ul > .mi.active > .ilink,
+.inav > .igroup > ul > .mi > .icurrent
+{
+    color: #fff;
+    background-color: rgba(0,0,0,.1);
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+}
+.inav > .mi > .ilink .iicon,
+.inav > .igroup > ul > .mi > .ilink .iicon
+{
+    padding-left: 1.3em;
+}
+.inav > .mi > .ilink .ititle,
+.inav > .igroup > ul > .mi > .ilink .ititle
+{
+    font-size: 13px;
+    padding: 1em 1.2em;
+}
+.inav .isub .iicon,
+.inav .isub .iimage
+{
+    margin-right: .5em;
+}
+.inav .iicon img
+{
+    max-width: 1.5em;
+}
+.inav .iicon .fa
+{
+    font-size: 1.35em;
+}
+.inav .ibadge
+{
+    font-size: 85%;
+    font-weight: normal;
+    line-height: 1;
+    margin-left: .5em;
+    padding: .25em .55em;
+    text-align: center;
+    vertical-align: baseline;
+    white-space: nowrap;
+    text-decoration: none;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 1em;
+    background-color: transparent;
+}
+.inav > .mi > .ilink > .ititle > .ibadge,
+.inav > .igroup > ul > .mi > .ilink > .ititle > .ibadge
+{
+    border-color: rgba(255,255,255,.15);
+}
+
+/* SubItems */
+.inav .isub
+{
+    border: 1px solid rgba(0,0,0,.1);
+    background-color: #fff;
+    padding: .8em 1.6em;
+    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.085);
+       -moz-box-shadow: 1px 1px 1px rgba(0,0,0,.085);
+            box-shadow: 1px 1px 1px rgba(0,0,0,.085);
+}
+.inav .isub.ilists
+{
+    border-bottom-right-radius: .5em;
+    border-bottom-left-radius: .5em;
+}
+.inav .isub .ilink
+{
+    color: #444;
+}
+.inav .isub .ilink:hover
+{
+    color: #23a1d1;
+}
+.inav .isub .icurrent
+{
+    font-weight: bold;
+}
+
+/* One Column */
+.inav .isub.ilist .mi + .mi
+{
+    margin-top: .25em;
+}
+.inav .isub.ilist .ititle.icount
+{
+    padding-right: 1.5em;
+}
+.inav .isub.ilist .iparent > .ilink:after
+{
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-size: 1.1em;
+    line-height: 1em;
+    position: absolute;
+    top: 50%;
+    right: .3em;
+    margin-top: -.5em;
+    content: '\f105';
+    opacity: .45;
+}
+.inav .isub.ilist .iparent:hover > .ilink:after,
+.inav .isub.ilist .iparent.active > .ilink:after
+{
+    opacity: 1;
+}
+
+/* Multi Column */
+.inav .ilists .ilist .iparent > .ilink
+{
+    /*font-weight: bold;*/
+}
+.inav .ilists .ilist .ilink
+{
+    padding-left: 1em;
+}
+.inav .ilists .ilist .ilink:before
+{
+    font-weight: normal;
+    line-height: 1em;
+    position: absolute;
+    top: 50%;
+    left: .2em;
+    margin-top: -.5em;
+    content: '\2022';
+    color: #ddd;
+}
+.inav .ilink,
+.inav .iparent > .ilink:after
+{
+    -webkit-transition: color .2s;
+       -moz-transition: color .2s;
+        -ms-transition: color .2s;
+         -o-transition: color .2s;
+            transition: color .2s;
+}
+
+
+@media (max-width: 767px) {
+.yumenu
+{
+    border: none;
+    background-color: transparent;
+
+    flex-grow: 1;
+    flex-basis: 100%;
+    width: 100%;
+}
+.iheader
+{
+    font-size: 17px;
+    position: relative;
+    display: block;
+    padding: .75em 2em .75em 1em;
+    cursor: pointer;
+    color: white;
+    border-radius: .3em;
+    background-color: #474747;
+}
+.iheader:after
+{
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    width: 14px;
+    height: 2px;
+    margin-top: -5px;
+    content: '';
+    background-color: rgba(255,255,255,.95);
+    -webkit-box-shadow: 0 2px transparent, 0 4px rgba(255,255,255,.95), 0 6px transparent, 0 8px rgba(255,255,255,.95);
+       -moz-box-shadow: 0 2px transparent, 0 4px rgba(255,255,255,.95), 0 6px transparent, 0 8px rgba(255,255,255,.95);
+            box-shadow: 0 2px transparent, 0 4px rgba(255,255,255,.95), 0 6px transparent, 0 8px rgba(255,255,255,.95);
+}
+.menu-expanded .iheader
+{
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.menu-expanded .iheader + div
+{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.icontent
+{
+    display: none;
+}
+.inav,
+.inav ul,
+.inav .isub > div,
+.inav .ilists > div > ul
+{
+    flex-direction: column;
+}
+.inav ul
+{
+    width: 100%;
+}
+.inav .ilists > div > ul + ul
+{
+    margin: 0;
+}
+.inav .iicon,
+.inav .isub .iicon,
+.inav .ilink .iimage,
+.inav > .mi > .ilink .iicon,
+.inav > .igroup > ul > .mi > .ilink .iicon
+{
+    margin: 0;
+    padding-left: 1em;
+}
+.inav .iparent > .ilist,
+.inav .iparent > .ilists
+{
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    display: none;
+    visibility: visible;
+    margin: 0;
+    padding: 0;
+    opacity: 1;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+.inav .ilists .icurrent + .ilist {
+    display: none;
+}
+.inav .mi,
+.inav .isub.ilist .mi + .mi,
+.inav .ilists > div > ul > .mi + .mi
+{
+    position: relative;
+    margin: 0;
+}
+.inav > .mi > .ilink,
+.inav > .igroup > ul > .mi > .ilink,
+.inav .isub .ilink,
+.inav .ilist .ilink,
+.inav .ilists .ilink
+{
+    color: #333;
+    border-top: 2px solid #fff;
+    background-color: rgba(0,0,0,.03);
+    text-shadow: 0 1px 0 #fff;
+}
+.inav .isub .ilink
+{
+    padding: 0 !important;
+}
+.inav .ilists > div > ul > .mi > .ilink
+{
+    font-size: inherit;
+    font-weight: normal;
+    color: #333;
+}
+.inav > .mi.active > .ilink,
+.inav .mi.mob-sub-open > .ilink,
+.inav .mi:hover > .ilink,
+.inav > .mi > .icurrent.ilink,
+.inav > .igroup > ul > .mi:hover > .ilink,
+.inav > .igroup > ul > .mi.active > .ilink,
+.inav > .igroup > ul > .mi > .icurrent.ilink,
+.inav > .igroup > ul > .mi.mob-sub-open > .ilink
+{
+    color: #333;
+    background-color: rgba(0,0,0,.065);
+    text-shadow: 0 1px 0 #fff;
+}
+.inav .ititle,
+.inav .isub.ilist .ititle,
+.inav > .mi > .ilink .ititle,
+.inav > .igroup > ul > .mi > .ilink .ititle
+{
+    font-size: 1em;
+    padding: .65em 1.3em;
+}
+.inav .mi .ilink .ititle.icount
+{
+    padding-right: 2.5em;
+}
+.inav > .mi > .ilink > .ititle > .ibadge,
+.inav > .igroup > ul > .mi > .ilink > .ititle > .ibadge
+{
+    border-color: rgba(0,0,0,.12);
+}
+.inav .iparent > .ilink:after,
+.inav .isub.ilist .iparent > .ilink:after
+{
+    font-family: FontAwesome;
+    font-size: 1.1em;
+    font-weight: normal;
+    line-height: 1em;
+    position: absolute;
+    top: 50%;
+    right: 1em;
+    margin-top: -.5em;
+    content: '\f105';
+    -webkit-transition: all .2s;
+       -moz-transition: all .2s;
+        -ms-transition: all .2s;
+         -o-transition: all .2s;
+            transition: all .2s;
+}
+.inav .iparent.mob-sub-open > .ilink:after
+{
+    -webkit-transform: rotate(90deg);
+       -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+         -o-transform: rotate(90deg);
+            transform: rotate(90deg);
+}
+.inav .ilists .ilist .mi .ilink:before
+{
+    content: '';
+}
+.inav .isub > div > ul + ul
+{
+    margin: 0;
+}
+}
+
+/*Amazon menu*/
+@media (max-width: 767px)
+{
+    .yum-amazon
+    {
+        border: none;
+        background-color: transparent;
+        flex-grow: 1;
+        flex-basis: 100%;
+    }
+}
+
+@media (min-width: 768px)
+{
+    .yum-amazon
+    {
+        position: relative;
+        border: 1px solid rgba(0,0,0,.125);
+        border-radius: .4em;
+        background: #337ab7;
+        display: inline-flex;
+    }
+    .yum-amazon .iheader
+    {
+        font-size: 16px;
+        position: relative;
+        display: block;
+        min-width: 260px;
+        padding: .75em 1.1em;
+        cursor: pointer;
+        color: #fff;
+        border-radius: .3em;
+    }
+    .yum-amazon .icontent
+    {
+        position: absolute;
+        z-index: 7777;
+        top: 100%;
+        left: -1px;
+        visibility: hidden;
+        margin-top: 1px;
+        padding: 0;
+        -webkit-transition: opacity .2s;
+           -moz-transition: opacity .2s;
+            -ms-transition: opacity .2s;
+             -o-transition: opacity .2s;
+                transition: opacity .2s;
+        opacity: 0;
+        border: 1px solid rgba(0,0,0,.1);
+        background-color: #fff;
+        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.085);
+           -moz-box-shadow: 0 1px 1px rgba(0,0,0,.085);
+                box-shadow: 0 1px 1px rgba(0,0,0,.085);
+    }
+    .yum-amazon.menu-expanded .icontent,
+    .yum-amazon .iparent.sub-open > .isub
+    {
+        visibility: visible;
+        opacity: 1;
+    }
+    .yum-amazon.menu-expanded
+    {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    .yum-amazon.menu-expanded .icontent
+    {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+    .yum-amazon .inav,
+    .yum-amazon .inav > .igroup > ul
+    {
+        flex-direction: column;
+        min-width: 260px;
+    }
+    .yum-amazon .mi
+    {
+        border-top: 1px solid rgba(0,0,0,.065);
+    }
+    .yum-amazon .inav > .mi.irel,
+    .yum-amazon .inav > .igroup > ul > .mi.irel
+    {
+        position: initial;
+    }
+    .yum-amazon .mi:first-child
+    {
+        border-top-color: transparent;
+    }
+    .yum-amazon .inav > .igroup > ul > .mi:first-child
+    {
+        border-top-color: rgba(0,0,0,.065);
+    }
+    .yum-amazon .inav > .mi > .ilink,
+    .yum-amazon .inav > .igroup > ul > .mi > .ilink
+    {
+        color: #555;
+        background-color: transparent;
+        text-shadow: none;
+    }
+    .yum-amazon .inav > .mi:hover > .ilink,
+    .yum-amazon .inav > .igroup > ul > .mi:hover > .ilink
+    {
+        color: #111;
+    }
+    .yum-amazon .inav > .mi.iparent > .ilink:after,
+    .yum-amazon .inav > .igroup > ul > .mi.iparent > .ilink:after
+    {
+        font-family: FontAwesome;
+        font-size: 1.1em;
+        font-weight: normal;
+        line-height: 2em;
+        position: absolute;
+        top: 50%;
+        right: 1em;
+        margin-top: -1em;
+        content: '\f105';
+        opacity: .4;
+    }
+    .yum-amazon .inav > .mi.iparent:hover > .ilink:after,
+    .yum-amazon .inav > .mi.iparent.sub-open > .ilink:after,
+    .yum-amazon .inav > .igroup > ul > .mi.iparent:hover > .ilink:after,
+    .yum-amazon .inav > .igroup > ul > .mi.iparent.sub-open > .ilink:after
+    {
+        opacity: .6;
+    }
+    .yum-amazon .inav > .mi.active > .ilink,
+    .yum-amazon .inav > .mi.iparent.sub-open > .ilink,
+    .yum-amazon .inav > .mi:hover > .ilink,
+    .yum-amazon .inav > .igroup > ul > .mi.active > .ilink,
+    .yum-amazon .inav > .igroup > ul > .mi.iparent.sub-open > .ilink,
+    .yum-amazon .inav > .igroup > ul > .mi:hover > .ilink
+    {
+        color: #333;
+        background-color: rgba(0,0,0,.015);
+        text-shadow: 0 1px 0 #fff;
+    }
+    .yum-amazon .inav > .mi > .ilink .ititle,
+    .yum-amazon .inav > .igroup > ul > .mi > .ilink .ititle
+    {
+        position: relative;
+        padding: .65em 1.3em;
+    }
+    .yum-amazon .inav > .mi > .ilink > .ititle.icount,
+    .yum-amazon .inav > .igroup > ul > .mi > .ilink > .ititle.icount
+    {
+        padding-right: 2.5em;
+    }
+    .yum-amazon .inav > .mi > .ilink > .ititle > .ibadge,
+    .yum-amazon .inav > .igroup > ul > .mi > .ilink > .ititle > .ibadge
+    {
+        border-color: rgba(0,0,0,.12);
+    }
+    .yum-amazon .inav > .mi > .ilink .iicon + div,
+    .yum-amazon .inav > .igroup > ul > .mi > .ilink .iicon + div
+    {
+        padding-left: 1em;
+    }
+    .yum-amazon .iparent > .isub
+    {
+        position: absolute;
+        z-index: 7777;
+        top: -1px;
+        left: 100%;
+        visibility: hidden;
+        -webkit-transition: all 0s;
+           -moz-transition: all 0s;
+            -ms-transition: all 0s;
+             -o-transition: all 0s;
+                transition: all 0s;
+        opacity: 0;
+        border-radius: 2px;
+    }
+    #column-right .yum-amazon .iparent > .isub
+    {
+        right: 100%;
+        left: auto;
+    }
+    .yum-amazon .inav > .mi.iparent > .ilink:before,
+    .yum-amazon .inav > .igroup > ul > .mi.iparent > .ilink:before
+    {
+        position: absolute;
+        z-index: 7778;
+        top: 0;
+        right: -1em;
+        visibility: hidden;
+        width: 2em;
+        height: 100%;
+        content: '';
+        opacity: 0;
+        background: #fff;
+    }
+    .yum-amazon .inav > .mi.iparent.sub-open > .ilink:before,
+    .yum-amazon .inav > .igroup > ul > .mi.iparent.sub-open > .ilink:before
+    {
+        visibility: visible;
+        opacity: 1;
+        background: rgba(250,250,250,1);
+        background:    -moz-linear-gradient(left, rgba(250,250,250,1) 0%, rgba(255,255,255,1) 100%);
+        background: -webkit-gradient(left top, right top, color-stop(0%, rgba(250,250,250,1)), color-stop(100%, rgba(255,255,255,1)));
+        background: -webkit-linear-gradient(left, rgba(250,250,250,1) 0%, rgba(255,255,255,1) 100%);
+        background:      -o-linear-gradient(left, rgba(250,250,250,1) 0%, rgba(255,255,255,1) 100%);
+        background:     -ms-linear-gradient(left, rgba(250,250,250,1) 0%, rgba(255,255,255,1) 100%);
+        background:         linear-gradient(to right, rgba(250,250,250,1) 0%, rgba(255,255,255,1) 100%);
+
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbfbfb', endColorstr='#ffffff', GradientType=1 );
+    }
+    #column-right .yum-amazon .inav > .mi.iparent.sub-open.iparent > .ilink:before,
+    #column-right .yum-amazon .inav > .igroup > ul > .mi.iparent.sub-open.iparent > .ilink:before
+    {
+        visibility: visible;
+        opacity: 1;
+        background: rgba(255,255,255,1);
+        background:    -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(250,250,250,1) 100%);
+        background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(250,250,250,1)));
+        background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(250,250,250,1) 100%);
+        background:      -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(250,250,250,1) 100%);
+        background:     -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(250,250,250,1) 100%);
+        background:         linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(250,250,250,1) 100%);
+
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#fbfbfb', GradientType=1 );
+    }
+
+    #column-right .yum-amazon .inav > .mi.iparent > .ilink:before,
+    #column-right .yum-amazon .inav > .igroup > ul > .mi.iparent > .ilink:before
+    {
+        left: -1em;
+    }
+    .yum-amazon .icurrent
+    {
+        font-weight: bold;
+    }
+    .yum-amazon .ititle
+    {
+        padding: .65em 1.3em;
+        white-space: pre-wrap;
+        flex-shrink: 1;
+    }
+    .yum-amazon .isub
+    {
+        padding: 2em 1em;
+    }
+    .yum-amazon .isub .mi
+    {
+        border-color: transparent;
+    }
+    .yum-amazon .isub .mi.iparent > .ilink:after
+    {
+        content: '';
+    }
+    .yum-amazon .isub .iimage + .ititle,
+    .yum-amazon .isub .iicon + .ititle
+    {
+        margin: .5em;
+        padding: .5em;
+        justify-content: center;
+    }
+    .yum-amazon .isub .ilink > .iimage,
+    .yum-amazon .isub .ilink > .iicon
+    {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+
+        justify-content: center;
+    }
+    .yum-amazon .isub .ilink
+    {
+        flex-direction: column;
+    }
+    .yum-amazon .isub .iicon img
+    {
+        max-width: 100px;
+    }
+    .yum-amazon .ilist > ul
+    {
+        min-width: auto;
+        margin: 0 1em;
+    }
+    .yum-amazon .ilist .ititle
+    {
+        padding: 0;
+    }
+    .yum-amazon .ilists > div
+    {
+        flex-flow: column nowrap;
+    }
+    .yum-amazon .ilists > div > ul
+    {
+        flex-flow: row nowrap;
+    }
+    .yum-amazon .ilists > div > ul + ul
+    {
+        margin: 1.5em 0 0 0;
+    }
+    .yum-amazon .ilists > div > ul > .mi
+    {
+        width: 150px;
+    }
+    .yum-amazon .ilists > div > ul > .mi + .mi
+    {
+        margin: 0;
+    }
+    .yum-amazon .ilists .icurrent + .ilist
+    {
+        display: none;
+    }
+}

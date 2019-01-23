@@ -1,0 +1,250 @@
+/*
+ * YUMenu v1.0.5 Copyright © 2017, iDiY
+ */
+
+.panel-heading
+{
+    font-size: 16px;
+    position: relative;
+    padding: .75em 1em;
+    cursor: pointer;
+}
+.panel-heading:after
+{
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    width: 14px;
+    height: 2px;
+    margin-top: -5px;
+    content: '';
+    opacity: 0;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 2px transparent, 0 4px rgba(0,0,0,.5), 0 6px transparent, 0 8px rgba(0,0,0,.5);
+       -moz-box-shadow: 0 2px transparent, 0 4px rgba(0,0,0,.5), 0 6px transparent, 0 8px rgba(0,0,0,.5);
+            box-shadow: 0 2px transparent, 0 4px rgba(0,0,0,.5), 0 6px transparent, 0 8px rgba(0,0,0,.5);
+}
+.panel-heading.menu-collapsed
+{
+    padding-right: 30px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.panel-heading.menu-collapsed:after
+{
+    opacity: 1;
+}
+.yum-am ul
+{
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.yum-am .igroup > ul
+{
+    height: auto;
+}
+.yum-am ul ul
+{
+    overflow: hidden;
+    height: 0;
+}
+.yum-am li.active > ul
+{
+    height: auto;
+}
+.yum-am li
+{
+    position: relative;
+    display: block;
+    float: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid rgba(0,0,0,.065);
+    background: transparent;
+}
+.yum-am > ul > li:first-child
+{
+    border-top-color: transparent;
+}
+.yum-am li .icurrent
+{
+    font-weight: bold;
+}
+.yum-am li.iparent > .ilink
+{
+    cursor: pointer;
+}
+.yum-am .ilink
+{
+    display: flex;
+    flex-flow: row nowrap;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+    color: #555;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+.yum-am li.active > .ilink,
+.yum-am li .ilink:hover
+{
+    color: #333;
+    background-color: rgba(0,0,0,.015);
+    text-shadow: 0 1px 0 #fff;
+}
+.yum-am li .ilink > div
+{
+    position: relative;
+    padding: .65em 1.3em;
+}
+.yum-am li.iparent > .ilink > .ititle
+{
+    padding-right: .65em;
+}
+.yum-am li .ilink > .icount
+{
+    padding-right: 3em;
+}
+.yum-am .ilink .ititle
+{
+    display: flex;
+    flex-shrink: 2;
+    flex-grow: 8;
+    justify-content: space-between;
+    align-items: center;
+}
+.yum-am .ilink .ibadge
+{
+    font-size: 85%;
+    font-weight: normal;
+    line-height: 1;
+    margin-left: .5em;
+    padding: .25em .5em;
+    text-align: center;
+    white-space: nowrap;
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 1em;
+    background-color: white;
+}
+.yum-am .ilink .iicon
+{
+    display: flex;
+    padding: 0 1.3em;
+
+    justify-content: space-between;
+    align-items: center;
+}
+.yum-am li li .ilink .iicon {
+    padding-left: 0;
+}
+.yum-am .ilink .iicon img
+{
+    display: block;
+    max-width: 1.5em;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+    vertical-align: middle;
+    border: 0;
+}
+.yum-am .ilink .iicon + div
+{
+    padding-left: 0;
+}
+.yum-am .ilink .iicon .fa
+{
+    font-size: 1.35em;
+}
+.yum-am .ilink .ibtn
+{
+    line-height: 0;
+    display: flex;
+    padding: 0;
+    border-left: 1px solid transparent;
+
+    flex-basis: 2.35em;
+    align-items: center;
+    justify-content: center;
+}
+.yum-am li .ilink:hover .ibtn
+{
+    border-left-color: rgba(0,0,0,.065);
+}
+.yum-am .ilink .ibtn:hover
+{
+    border-left-color: rgba(0,0,0,.065);
+    background-color: rgba(0,0,0,.015);
+}
+
+/* Arrow */
+.yum-am .ilink .ibtn:before
+{
+    font-family: FontAwesome;
+    font-size: 1.1em;
+    font-weight: normal;
+    padding-left: 1px;
+    content: '\f105';
+    opacity: .45;
+}
+.yum-am .ilink:hover .ibtn:before
+{
+    opacity: .65;
+}
+.yum-am .ilink .ibtn:hover:before,
+.yum-am li.active > .ilink .ibtn:before
+{
+    opacity: .95;
+}
+.yum-am li.active > .ilink .ibtn:before
+{
+    -webkit-transform: rotate(90deg);
+       -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+         -o-transform: rotate(90deg);
+            transform: rotate(90deg);
+}
+.yum-am li li .ilink .ititle:before
+{
+    font-weight: normal;
+    line-height: 1em;
+    position: absolute;
+    top: 50%;
+    left: .2em;
+    margin-top: -.5em;
+    content: '\2022';
+    opacity: .65;
+    color: #23a1d1;
+}
+.yum-am li li .ilink:hover .ititle:before,
+.yum-am li li .icurrent .ititle:before
+{
+    opacity: 1;
+}
+.yum-am li li .ilink .iicon + .ititle:before
+{
+    content: '';
+}
+.yum-am *:before,
+.yum-am *:after
+{
+    display: block;
+}
+.panel-heading:after,
+.yum-am .ilink,
+.yum-am .ibtn,
+.yum-am .ibtn:before
+{
+    -webkit-transition: all .2s;
+       -moz-transition: all .2s;
+        -ms-transition: all .2s;
+         -o-transition: all .2s;
+            transition: all .2s;
+}
